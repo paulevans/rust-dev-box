@@ -12,7 +12,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "apt-get --assume-yes install cmake"
   config.vm.provision "shell", inline: "apt-get --assume-yes install curl"
   config.vm.provision "shell", inline: "apt-get --assume-yes install git"
-  config.vm.provision "shell", path: "rust_devup.sh"
+
+
+  config.vm.provision "shell", path: "rust_devup.sh", env: {USE_RUST_SOURCE:ENV['USE_RUST_SOURCE']}
 
 
   # Provider specific settings.
