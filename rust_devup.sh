@@ -1,5 +1,11 @@
-su vagrant -c "mkdir -p ~/dev/"
-su vagrant -c "cd ~/dev"
-su vagrant -c "git clone https://github.com/rust-lang/rust.git ~/dev/rust || true"
-su vagrant -c "cd ~/dev/rust && ~/dev/rust/configure"
-su vagrant -c "sudo make -C /home/vagrant/dev/rust/ install"
+#!/bin/bash
+
+echo "Installing rust from source..."
+
+mkdir -p ~/github/rust-lang/
+cd ~/github/rust-lang
+git clone https://github.com/rust-lang/rust.git
+cd ~/github/rust-lang/rust 
+git checkout stable 
+./configure
+make && sudo make install
